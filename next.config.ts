@@ -1,4 +1,15 @@
 import type { NextConfig } from 'next';
+import fs from 'fs';
+import path from 'path';
+
+// Check if CV exists at build time and warn if missing
+const cvPath = path.join(process.cwd(), 'public/cv/Aymane_El_Khadraoui_CV_EN.pdf');
+if (!fs.existsSync(cvPath)) {
+  console.warn('\n⚠️  [ASSET WARNING]: public/cv/Aymane_El_Khadraoui_CV_EN.pdf was not found.');
+  console.warn(
+    '   The portfolio will render the link to this CV, but ensure the file is placed at public/cv/Aymane_El_Khadraoui_CV_EN.pdf before distribution.\n',
+  );
+}
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

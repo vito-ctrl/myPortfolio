@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Light Theme (default) */
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --surface-muted: #eef1ed;
+  --text: #14181f;
+  --text-muted: #5a6472;
+  --border: #d5d9df;
+  --border-subtle: #e2e6eb;
+  --accent: #0a7a5a;
+  --accent-hover: #075c43;
+  --accent-subtle: rgba(10, 122, 90, 0.09);
+  --accent-contrast: #ffffff;
+  --shadow-color: rgba(20, 24, 31, 0.06);
+  --grid-line: rgba(20, 24, 31, 0.04);
+  --focus-ring: #0a7a5a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme */
+    --bg: #0e1116;
+    --surface: #151a21;
+    --surface-muted: #1c232d;
+    --text: #e7ecf2;
+    --text-muted: #9aa6b5;
+    --border: #2a323d;
+    --border-subtle: #1e252f;
+    --accent: #4ade9f;
+    --accent-hover: #34d399;
+    --accent-subtle: rgba(74, 222, 159, 0.12);
+    --accent-contrast: #0e1116;
+    --shadow-color: rgba(0, 0, 0, 0.35);
+    --grid-line: rgba(231, 236, 242, 0.04);
+    --focus-ring: #4ade9f;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: top 150ms ease-in-out;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
