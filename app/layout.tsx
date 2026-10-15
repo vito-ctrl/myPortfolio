@@ -3,6 +3,7 @@ import { fontSans, fontMono } from '@/lib/fonts';
 import { MotionProvider } from '@/components/ui/MotionProvider';
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
+import { CommandPalette } from '@/components/palette/CommandPalette';
 import './globals.css';
 
 export const viewport: Viewport = {
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
           <Footer />
+          <CommandPalette />
         </MotionProvider>
       </body>
     </html>
